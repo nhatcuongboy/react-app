@@ -38,6 +38,7 @@ pipeline {
         }   
         stage('Run Docker Image') {         
           steps {    
+            sh 'sudo docker rm -f react-app-final'
             sh 'sudo docker run --name react-app-final -d -p 3003:3000 --rm $DOCKERHUB_CREDENTIALS_USR/$DOCKERHUB_REPOSITORY:$BUILD_NUMBER'                 
             echo 'Run Image Completed'       
           }           
